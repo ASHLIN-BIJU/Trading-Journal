@@ -125,4 +125,17 @@ php artisan migrate:fresh --seed
 
 ---
 
+## 🖥️ Linux Desktop App (One-Click Startup)
+For a native app experience on Linux, you can use the built-in launcher:
+1. Make the launcher executable:
+   ```bash
+   chmod +x launch.sh
+   ```
+2. Create a desktop shortcut (optional):
+   - You can copy the provided `Trading-Journal.desktop` (template) to your desktop.
+   - Update the `Exec` and `Icon` paths to point to your project folder.
+   - Right-click the icon and select **"Allow Launching"**.
+
+---
+
 Developed with ❤️ by [Ashlin Biju](https://github.com/ASHLIN-BIJU).

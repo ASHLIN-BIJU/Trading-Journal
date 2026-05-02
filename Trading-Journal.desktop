@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=TradeJournal
+Comment=Professional Trading Journal Application
+Exec=/path/to/Trading-Journal/launch.sh
+Icon=/path/to/Trading-Journal/app_icon.png
+Terminal=false
+Categories=Office;Finance;
+StartupNotify=true
