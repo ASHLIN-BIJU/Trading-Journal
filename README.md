@@ -2,7 +2,9 @@
 
 **TradeJournal** is a professional, high-performance trading companion designed for modern traders. Built with a focus on speed, analytics, and precision, it empowers you to manage multiple trading accounts, track performance with deep analytics, and master risk management with an integrated suite of calculators.
 
-![Analytics Preview](public/images/readme/analytics.png)
+<p align="center">
+  <img src="public/images/readme/analytics.png" width="100%" alt="Analytics Preview">
+</p>
 
 ---
 
@@ -19,7 +21,9 @@
 - **Weekly Summaries**: Automated weekly P&L and trade count breakdowns.
 - **Recent Trades**: Quick access to your latest setups and notes.
 
-![Journal Preview](public/images/readme/journal.png)
+<p align="center">
+  <img src="public/images/readme/journal.png" width="100%" alt="Journal Preview">
+</p>
 
 ### 💼 Multi-Account Architecture
 - **Isolated Journals**: Manage different strategies or prop firm accounts independently within a single interface.
