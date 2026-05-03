@@ -249,7 +249,50 @@ class AnalyticsService
     }
 
     /**
-     * Compute max win and loss streaks from sorted trades.
+     * Day of the week performance.
+     * Returns [['day' => 'Monday', 'pnl' => float, 'trades' => int, 'win_rate' => float], ...]
+     */
+    public function getDayOfWeekPerformance(TradingAccount $account, ?string $timeframe = null): array
+    {
+        $query = $account->trades()->closed();
+
+        if ($timeframe) {
+            $date = match($timeframe) {
+                '1m' => now()->subMonth(),
+                '2m' => now()->subMonths(2),
+                '3m' => now()->subMonths(3),
+                '6m' => now()->subMonths(6),
+                '1y' => now()->subYear(),
+                default => null
+            };
+            if ($date) {
+                $query->where('trade_date', '>=', $date);
+            }
+        }
+
+        $trades = $query->get(['trade_date', 'profit_loss', 'result']);
+
+        $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        $stats = [];
+
+        foreach ($days as $day) {
+            $group = $trades->filter(fn($t) => $t->trade_date->format('l') === $day);
+            $total = $group->count();
+            $wins  = $group->where('result', 'win')->count();
+
+            $stats[] = [
+                'day'      => $day,
+                'pnl'      => round((float) $group->sum('profit_loss'), 2),
+                'trades'   => $total,
+                'win_rate' => $total > 0 ? round(($wins / $total) * 100, 2) : 0,
+            ];
+        }
+
+        return $stats;
+    }
+
+    /**
+     * Compute streaks...
      */
     private function computeStreaks(Collection $trades): array
     {

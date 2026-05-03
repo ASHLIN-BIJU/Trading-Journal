@@ -10,16 +10,18 @@ class AnalyticsController extends Controller
 {
     public function __construct(private AnalyticsService $analytics) {}
 
-    public function index()
+    public function index(Request $request)
     {
-        $user     = Auth::user();
-        $account  = $user->getActiveAccount();
+        $user      = Auth::user();
+        $account   = $user->getActiveAccount();
+        $timeframe = $request->get('timeframe', 'all');
         $stats    = $this->analytics->getSummary($account);
         $longShort = $this->analytics->getLongShortStats($account);
         $monthly  = $this->analytics->getMonthlyPerformance($account);
         $bestWorst = $this->analytics->getBestWorstDays($account);
         $equityCurve = $this->analytics->getEquityCurve($account);
         $drawdownSeries = $this->analytics->getDrawdownSeries($account);
+        $dayPerf   = $this->analytics->getDayOfWeekPerformance($account, $timeframe);
 
         // Per-asset breakdown
         $assetStats = $account->trades()
@@ -32,7 +34,7 @@ class AnalyticsController extends Controller
 
         return view('analytics.index', compact(
             'stats', 'longShort', 'monthly', 'bestWorst',
-            'assetStats', 'equityCurve', 'drawdownSeries'
+            'assetStats', 'equityCurve', 'drawdownSeries', 'dayPerf', 'timeframe'
         ));
     }
 }
