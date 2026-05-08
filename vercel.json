@@ -18,8 +18,8 @@
     ],
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "APP_URL": "https://your-tradejournal-app.vercel.app",
+        "APP_DEBUG": "true",
+        "APP_URL": "https://trading-journal-z3bs.vercel.app",
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
         "APP_PACKAGES_CACHE": "/tmp/packages.php",
@@ -28,11 +28,11 @@
         "CACHE_STORE": "array",
         "SESSION_DRIVER": "cookie",
         "DB_CONNECTION": "pgsql",
-        "DB_HOST": "",
+        "DB_HOST": "db.kpsgnhlplovoaarggvbj.supabase.co",
         "DB_PORT": "5432",
         "DB_DATABASE": "postgres",
         "DB_USERNAME": "postgres",
-        "DB_PASSWORD": "",
+        "DB_PASSWORD": "TradeJournal2026!",
         "DB_SSLMODE": "require"
     },
     "outputDirectory": "public"
